@@ -41,6 +41,17 @@ public class TpChap6Application {
             logsRep.save(l2);
             logsRep.save(l3);
 
+            //liaison User_logs
+            ArrayList<Logs> logs = new ArrayList<Logs>();
+            logs.add(l1);
+            logs.add(l2);
+            logs.add(l3);
+
+            u1.setLogs(logs);
+            userRep.save(u1);
+
+
+
 
             // save a few Groups
 
@@ -53,6 +64,8 @@ public class TpChap6Application {
 
 
 
+
+            //liaison User_group
 
 
             ArrayList<Group> groups =  new ArrayList();

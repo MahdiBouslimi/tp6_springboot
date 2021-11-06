@@ -1,6 +1,7 @@
 package com.example.tp_chap6;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class Group {
 
 
     @ManyToMany
-    @JsonIgnore
+    @JsonIgnoreProperties("group")
     private List<User> user;
 
     public Group(String libelle, String capacite, List<User> user) {

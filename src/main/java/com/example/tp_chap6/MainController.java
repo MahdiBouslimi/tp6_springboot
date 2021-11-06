@@ -29,4 +29,12 @@ public class MainController {
     return "Saved";
     }
 
+    @Autowired
+    private  GroupRep groupRep;
+    @GetMapping(path = "/allg")
+    public @ResponseBody Iterable<Group> getAllGroup(){
+
+        return groupRep.findAll();
+    }
+
 }

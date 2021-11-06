@@ -1,6 +1,7 @@
 package com.example.tp_chap6;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,8 +26,10 @@ public class User {
     @Column(name = "email")
     private String email;
     @OneToMany
+    @JsonIgnoreProperties("user")
     private List<Logs> logs;
     @ManyToMany
+    @JsonIgnoreProperties("user")
     private List<Group> group;
 
 

@@ -1,6 +1,7 @@
 package com.example.tp_chap6;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class Logs {
     private String date;
     private String content;
     @ManyToOne
-    @JsonIgnore
+    @JsonIgnoreProperties("logs")
     private User user;
 
     public Logs(String date, String content, User user) {
