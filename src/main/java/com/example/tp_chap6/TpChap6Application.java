@@ -1,12 +1,12 @@
 package com.example.tp_chap6;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class TpChap6Application {
@@ -16,21 +16,26 @@ public class TpChap6Application {
         SpringApplication.run(TpChap6Application.class, args);
     }
     @Bean
-    @JsonIgnore
     public CommandLineRunner demo(UserRep userRep, LogsRep logsRep, GroupRep groupRep) {
         return (args) -> {
-            // save a few Users
+            // save a New Users
 
             User u1= new User(1, "Chloe", "O'Brian", new ArrayList<Logs>(), new ArrayList<Group>());
             User u2= new User(2, "Kim", "Bauer", new ArrayList<Logs>(), new ArrayList<Group>());
             User u3 = new User(3, "David", "Palmer", new ArrayList<Logs>(), new ArrayList<Group>());
 
 
-            userRep.save(u1);
-            userRep.save(u2);
-            userRep.save(u3);
+//            userRep.save(u1);
+//            userRep.save(u2);
+//            userRep.save(u3);
 
-            // save a few Logs
+            List<User> user= new ArrayList<>();
+            user.add(u1);
+            user.add(u2);
+            user.add(u3);
+            userRep.saveAll(user);
+
+            // save a New Logs
 
             Logs l1= new Logs( "2021-10-11", "this is first logs", u1);
             Logs l2= new Logs("2021-10-20", "this is thirs logs",u2);
@@ -53,16 +58,13 @@ public class TpChap6Application {
 
 
 
-            // save a few Groups
+            // save a New Groups
 
             Group g1 = new Group(  "group1", "40", new ArrayList<User>());
             Group g2 = new Group("groupe2", "30", new ArrayList<User>() );
 
             groupRep.save(g1);
             groupRep.save(g2);
-
-
-
 
 
             //liaison User_group
